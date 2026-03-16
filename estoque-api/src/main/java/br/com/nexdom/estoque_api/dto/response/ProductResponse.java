@@ -8,7 +8,7 @@ public record ProductResponse(
     Long id,
     String description,
     ProductType productType,
-    BigDecimal supplierValue,
+    BigDecimal supplierPrice,
     Integer stockQuantity
 ) {
 }

@@ -1,6 +1,7 @@
 package br.com.nexdom.estoque_api.controllers;
 
 import br.com.nexdom.estoque_api.dto.request.ProductRequest;
+import br.com.nexdom.estoque_api.dto.request.ProductUpdateRequest;
 import br.com.nexdom.estoque_api.dto.response.ProductByTypeResponse;
 import br.com.nexdom.estoque_api.dto.response.ProductProfitResponse;
 import br.com.nexdom.estoque_api.dto.response.ProductResponse;
@@ -34,9 +35,9 @@ public class ProductController {
         return productService.getAll();
     }
 
-    @PutMapping("/{id}")
-    public ProductResponse update(@PathVariable Long id, @RequestBody ProductRequest productRequest) {
-        return productService.update(id, productRequest);
+    @PutMapping
+    public ProductResponse update(@RequestBody ProductUpdateRequest productUpdateRequest) {
+        return productService.update(productUpdateRequest);
     }
 
     @DeleteMapping("/{id}")
