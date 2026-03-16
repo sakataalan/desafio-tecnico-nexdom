@@ -11,6 +11,6 @@ services:
     build: ./estoque-ui
     container_name: estoque-ui
     ports:
-      - "80:80"
+      - "5173:5173"
     depends_on:
       - estoque-api
