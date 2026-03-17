@@ -304,7 +304,7 @@ docker-compose down
 cd estoque-api
 
 # Windows
-./mvnw.cmd spring-boot:run
+./mvnw spring-boot:run
 
 # Linux/macOS
 ./mvnw spring-boot:run
