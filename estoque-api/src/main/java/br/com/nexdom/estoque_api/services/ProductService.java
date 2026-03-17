@@ -50,9 +50,13 @@ public class ProductService {
         Product product = productRepository.findById(productUpdateRequest.id())
                 .orElseThrow(() -> new EntityNotFoundException("Produto não encontrado"));
 
-        Product newProduct = productRepository.save(productMapper.toEntity(productUpdateRequest));
+        product.setDescription(productUpdateRequest.description());
+        product.setProductType(productUpdateRequest.productType());
+        product.setSupplierPrice(productUpdateRequest.supplierPrice());
+        product.setStockQuantity(productUpdateRequest.stockQuantity());
 
-        return productMapper.toDTO(newProduct);
+        productRepository.save(product);
+        return productMapper.toDTO(product);
     }
 
     public void delete(Long id) {
