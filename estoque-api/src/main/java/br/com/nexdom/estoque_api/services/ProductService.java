@@ -50,9 +50,13 @@ public class ProductService {
         Product product = productRepository.findById(productUpdateRequest.id())
                 .orElseThrow(() -> new EntityNotFoundException("Produto não encontrado"));
 
-        Product newProduct = productRepository.save(productMapper.toEntity(productUpdateRequest));
+        product.setDescription(productUpdateRequest.description());
+        product.setProductType(productUpdateRequest.productType());
+        product.setSupplierPrice(productUpdateRequest.supplierPrice());
+        product.setStockQuantity(productUpdateRequest.stockQuantity());
 
-        return productMapper.toDTO(newProduct);
+        productRepository.save(product);
+        return productMapper.toDTO(product);
     }
 
     public void delete(Long id) {
@@ -71,7 +75,7 @@ public class ProductService {
 
     public List<ProductProfitResponse> getProfitPerProduct(LocalDate startDate, LocalDate endDate) {
         if (startDate != null && endDate != null && startDate.isAfter(endDate)) {
-            throw new IllegalArgumentException("A data de inicio não pdoe ser posterior à data de fim");
+            throw new IllegalArgumentException("A data de inicio não pode ser posterior à data de fim");
         }
 
         LocalDateTime startDateTime = Optional.ofNullable(startDate)
