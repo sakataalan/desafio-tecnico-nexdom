@@ -23,7 +23,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -170,7 +169,6 @@ class ProductServiceTest {
     }
 
     @Test
-<<<<<<< HEAD
     void update_ShouldReturnUpdatedProductResponse() {
         // Given
         Product existingProduct = new Product();
@@ -191,7 +189,6 @@ class ProductServiceTest {
         when(productRepository.findById(1L)).thenReturn(Optional.of(product));
         when(productRepository.save(any(Product.class))).thenReturn(product);
         when(productMapper.toDTO(any(Product.class))).thenReturn(productResponse);
->>>>>>> 39d2c35 (added tests for service (#5))
 
         // When
         ProductResponse result = productService.update(productUpdateRequest);
